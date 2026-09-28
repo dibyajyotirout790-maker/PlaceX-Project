@@ -1,0 +1,65 @@
+<div class="login-page">
+
+  <div class="login-card">
+
+    <h1>Welcome to PlaceX</h1>
+
+    <p class="subtitle">
+      Login to your student account
+    </p>
+
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+
+      <label>Email</label>
+
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+      />
+
+      <label>Password</label>
+
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Enter your password"
+        required
+      />
+
+      <button
+        type="submit"
+        [disabled]="loading || !loginForm.valid"
+      >
+        {{ loading ? 'Logging in...' : 'Login' }}
+      </button>
+
+    </form>
+
+    <p
+      *ngIf="error"
+      class="error"
+    >
+      {{ error }}
+    </p>
+
+    <p
+      *ngIf="successMessage"
+      class="success"
+    >
+      {{ successMessage }}
+    </p>
+
+    <p class="register-link">
+      Don't have an account?
+      <a routerLink="/register">
+        Create Account
+      </a>
+    </p>
+
+  </div>
+
+</div>

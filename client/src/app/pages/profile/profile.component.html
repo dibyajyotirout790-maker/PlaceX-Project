@@ -1,0 +1,101 @@
+<div class="profile-page">
+
+  <div class="profile-card">
+
+    <h1>My Profile</h1>
+
+    <p class="subtitle">
+      Update your student information
+    </p>
+
+    <form (ngSubmit)="updateProfile()">
+
+      <label>Name</label>
+      <input
+        type="text"
+        [(ngModel)]="name"
+        name="name"
+        required
+      />
+
+      <label>Email</label>
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        readonly
+      />
+
+      <label>Phone</label>
+      <input
+        type="text"
+        [(ngModel)]="phone"
+        name="phone"
+        placeholder="Enter phone number"
+      />
+
+      <label>College</label>
+      <input
+        type="text"
+        [(ngModel)]="college"
+        name="college"
+        placeholder="Enter college name"
+      />
+
+      <label>Branch</label>
+      <input
+        type="text"
+        [(ngModel)]="branch"
+        name="branch"
+        placeholder="e.g. CSE"
+      />
+
+      <label>CGPA</label>
+      <input
+        type="number"
+        step="0.01"
+        [(ngModel)]="cgpa"
+        name="cgpa"
+        placeholder="Enter CGPA"
+      />
+
+      <label>Skills</label>
+      <textarea
+        [(ngModel)]="skills"
+        name="skills"
+        placeholder="Java, Angular, Node.js, MongoDB..."
+      ></textarea>
+
+      <button
+        type="submit"
+        [disabled]="loading"
+      >
+        {{ loading ? 'Updating...' : 'Update Profile' }}
+      </button>
+
+    </form>
+
+    <p
+      *ngIf="success"
+      class="success"
+    >
+      {{ success }}
+    </p>
+
+    <p
+      *ngIf="error"
+      class="error"
+    >
+      {{ error }}
+    </p>
+
+    <a
+      routerLink="/student-dashboard"
+      class="back"
+    >
+      ← Back to Dashboard
+    </a>
+
+  </div>
+
+</div>

@@ -1,0 +1,77 @@
+.applications-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f5f7fb;
+}
+
+.applications-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.loading {
+  padding: 20px;
+  text-align: center;
+}
+
+.error {
+  padding: 15px;
+  background: #ffe5e5;
+  color: #c62828;
+  border-radius: 8px;
+}
+
+.empty {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.browse-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.application-list {
+  display: grid;
+  gap: 20px;
+}
+
+.application-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.application-card h2 {
+  margin-top: 0;
+  color: #1e3a8a;
+}
+
+.application-card h3 {
+  color: #444;
+}
+
+.status {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #eef4ff;
+}

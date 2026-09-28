@@ -1,0 +1,16 @@
+node_modules/
+client/node_modules/
+server/node_modules/
+
+.env
+*.env
+server/.env
+client/.env
+
+dist/
+build/
+.angular/
+.vscode/
+.DS_Store
+
+PlaceX_backup/

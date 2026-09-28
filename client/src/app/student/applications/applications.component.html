@@ -1,0 +1,104 @@
+<div class="applications-page">
+
+  <div class="applications-container">
+
+    <h1>My Applications</h1>
+
+    <p class="subtitle">
+      Track all the jobs you have applied for.
+    </p>
+
+
+    <div
+      *ngIf="loading"
+      class="loading"
+    >
+      Loading applications...
+    </div>
+
+
+    <div
+      *ngIf="error"
+      class="error"
+    >
+      {{ error }}
+    </div>
+
+
+    <div
+      *ngIf="
+        !loading &&
+        !error &&
+        applications.length === 0
+      "
+      class="empty"
+    >
+
+      <h2>No Applications Yet</h2>
+
+      <p>
+        You haven't applied for any jobs yet.
+      </p>
+
+      <a
+        routerLink="/jobs"
+        class="browse-btn"
+      >
+        Browse Jobs
+      </a>
+
+    </div>
+
+
+    <div
+      *ngIf="
+        !loading &&
+        applications.length > 0
+      "
+      class="application-list"
+    >
+
+      <div
+        *ngFor="
+          let application of applications
+        "
+        class="application-card"
+      >
+
+        <h2>
+          {{ application.job?.title }}
+        </h2>
+
+        <h3>
+          {{ application.job?.companyName }}
+        </h3>
+
+        <p>
+          📍 {{ application.job?.location }}
+        </p>
+
+        <p>
+          💼 {{ application.job?.jobType }}
+        </p>
+
+        <p>
+          Applied:
+          {{ application.createdAt | date:'dd MMM yyyy' }}
+        </p>
+
+        <div class="status">
+
+          Status:
+          <strong>
+            {{ application.status }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

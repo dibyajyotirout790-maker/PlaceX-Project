@@ -1,0 +1,69 @@
+<div class="applications-page">
+
+  <h1>My Applications</h1>
+
+  <p *ngIf="loading">
+    Loading applications...
+  </p>
+
+  <p
+    *ngIf="error"
+    class="error"
+  >
+    {{ error }}
+  </p>
+
+
+  <div
+    *ngIf="!loading &&
+           !error &&
+           applications.length === 0"
+  >
+
+    <h3>No applications yet.</h3>
+
+    <p>
+      Apply for a job to see it here.
+    </p>
+
+  </div>
+
+
+  <div
+    *ngFor="let application of applications"
+    class="application-card"
+  >
+
+    <h2>
+      {{ application.job?.title || 'Job' }}
+    </h2>
+
+    <h3>
+      {{ application.job?.companyName || 'Company' }}
+    </h3>
+
+    <p>
+      📍
+      {{ application.job?.location || 'Not specified' }}
+    </p>
+
+    <p>
+      💼
+      {{ application.job?.jobType || 'Not specified' }}
+    </p>
+
+    <p>
+      Status:
+      <strong>
+        {{ application.status }}
+      </strong>
+    </p>
+
+    <p>
+      Applied:
+      {{ application.createdAt | date:'medium' }}
+    </p>
+
+  </div>
+
+</div>

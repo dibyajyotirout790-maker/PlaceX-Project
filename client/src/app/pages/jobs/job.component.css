@@ -1,0 +1,103 @@
+.jobs-page {
+  padding: 50px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.jobs-page h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 22px;
+  color: #555;
+}
+
+.job-count {
+  margin-top: 25px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.job-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(300px, 1fr));
+
+  gap: 25px;
+
+  margin-top: 30px;
+}
+
+.job-card {
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 5px 20px
+    rgba(0, 0, 0, 0.08);
+}
+
+.job-card h2 {
+  margin-top: 0;
+  font-size: 25px;
+}
+
+.job-card h3 {
+  color: #2563eb;
+}
+
+.description {
+  line-height: 1.6;
+}
+
+.skills {
+  margin-top: 15px;
+}
+
+.skill {
+  display: inline-block;
+
+  padding: 6px 12px;
+
+  margin: 4px;
+
+  background: #e5e7eb;
+
+  border-radius: 20px;
+
+  font-size: 14px;
+}
+
+.job-card button {
+  width: 100%;
+
+  margin-top: 20px;
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+.job-card button:hover {
+  background: #1d4ed8;
+}
+
+.no-jobs {
+  margin-top: 30px;
+  font-size: 20px;
+}

@@ -1,0 +1,88 @@
+<div class="jobs-page">
+
+  <h1>Available Jobs</h1>
+
+  <p class="subtitle">
+    Find placement opportunities on PlaceX.
+  </p>
+
+  <p class="job-count">
+    {{ jobs.length }} job(s) available
+  </p>
+
+
+  <div
+    class="job-grid"
+    *ngIf="jobs.length > 0"
+  >
+
+    <div
+      class="job-card"
+      *ngFor="let job of jobs"
+    >
+
+      <h2>
+        {{ job.title }}
+      </h2>
+
+      <h3>
+        {{ job.companyName }}
+      </h3>
+
+      <p>
+        📍 {{ job.location || 'Location not specified' }}
+      </p>
+
+      <p>
+        💼 {{ job.jobType || 'Not specified' }}
+      </p>
+
+      <p>
+        🎓
+        {{ job.experience || 'Experience not specified' }}
+      </p>
+
+      <p *ngIf="job.salaryMin || job.salaryMax">
+        💰 Salary:
+        {{ job.salaryMin || 0 }}
+        -
+        {{ job.salaryMax || 0 }}
+      </p>
+
+      <p class="description">
+        {{ job.description }}
+      </p>
+
+
+      <div
+        class="skills"
+        *ngIf="job.skills?.length"
+      >
+
+        <span
+          class="skill"
+          *ngFor="let skill of job.skills"
+        >
+          {{ skill }}
+        </span>
+
+      </div>
+
+
+      <button (click)="apply(job._id)">
+         Apply Now
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="no-jobs"
+    *ngIf="jobs.length === 0"
+  >
+    No jobs available.
+  </div>
+
+</div>
