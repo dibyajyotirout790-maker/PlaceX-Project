@@ -89,25 +89,56 @@ app.get("/", (req, res) => {
         message: "PlaceX API is running"
     });
 });
-
 app.get("/api/health", async (req, res) => {
-    res.status(200).json({
-        success: true,
-        message: "PlaceX backend is healthy",
-        mongoConfigured: !!process.env.MONGO_URI,
-        jwtConfigured: !!process.env.JWT_SECRET,
-        nodeEnv: process.env.NODE_ENV || "undefined"
-    });
+    try {
+        await connectDB();
+
+        res.status(200).json({
+            success: true,
+            message: "PlaceX backend and MongoDB are healthy",
+            mongoConfigured: !!process.env.MONGO_URI,
+            jwtConfigured: !!process.env.JWT_SECRET,
+            mongoConnected: true,
+            nodeEnv: process.env.NODE_ENV || "undefined"
+        });
+
+    } catch (error) {
+
+        console.error("Health check MongoDB error:", error);
+
+        res.status(503).json({
+            success: false,
+            message: "PlaceX backend is running but MongoDB is unavailable",
+            mongoConfigured: !!process.env.MONGO_URI,
+            jwtConfigured: !!process.env.JWT_SECRET,
+            mongoConnected: false,
+            error: error.message,
+            nodeEnv: process.env.NODE_ENV || "undefined"
+        });
+    }
 });
 
+// Ensure MongoDB is connected before database-dependent routes
+app.use(async (req, res, next) => {
+    try {
+        await connectDB();
+        next();
+    } catch (error) {
+        console.error("Database unavailable:", error.message);
+
+        return res.status(503).json({
+            success: false,
+            message: "Database unavailable",
+            error: error.message
+        });
+    }
+});
+
+// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
 app.use("/api/applications", applicationRoutes);
 app.use("/api/profile", profileRoutes);
-
-connectDB().catch((err) => {
-    console.error("MongoDB connection error:", err.message);
-});
 
 const PORT = process.env.PORT || 5000;
 
