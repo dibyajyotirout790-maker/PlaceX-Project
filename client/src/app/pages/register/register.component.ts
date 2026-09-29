@@ -26,8 +26,7 @@ export class RegisterComponent {
   errorMessage: string = '';
   successMessage: string = '';
 
-  private apiUrl: string =
-    'http://localhost:5000/api/auth/register';
+  private apiUrl: string = 'https://place-x-project-hwht.vercel.app/api/auth/register'
 
   constructor(
     private http: HttpClient,

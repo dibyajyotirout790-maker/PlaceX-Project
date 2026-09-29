@@ -9,8 +9,7 @@ import {
 })
 export class ApplicationService {
 
-  private apiUrl =
-    'http://localhost:5000/api/applications';
+  private apiUrl ='https://place-x-project-hwht.vercel.app/api/applications'
 
   constructor(
     private http: HttpClient

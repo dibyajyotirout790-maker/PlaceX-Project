@@ -12,7 +12,7 @@ import {
 export class JobService {
 
   private apiUrl =
-    'http://localhost:5000/api/jobs';
+    'https://place-x-project-hwht.vercel.app/api/jobs'
 
   constructor(
     private http: HttpClient

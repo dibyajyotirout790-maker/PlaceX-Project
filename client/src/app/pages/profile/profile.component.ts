@@ -62,8 +62,7 @@ export class ProfileComponent
 
   loading = false;
 
-  private apiUrl =
-    'http://localhost:5000/api/profile';
+  private apiUrl ='https://place-x-project-hwht.vercel.app/api/profile'
 
 
   constructor(
